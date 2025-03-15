@@ -8,7 +8,7 @@ app.use("/api/auth", authRoutes);
 
 // Route dasar untuk memastikan API berjalan
 app.get("/", (req, res) => {
-  res.json({ success: true, message: "API is running successfully!" });
+  res.json({ success: true, message: "AUTO DEPLOY!" });
 });
 
 const PORT: number = Number(process.env.PORT) || 3000;
