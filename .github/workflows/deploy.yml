@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main  # Jalankan ketika ada push ke branch main
+      - main
 
 jobs:
   deploy:
@@ -11,14 +11,21 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.VPS_IP }} > ~/.ssh/known_hosts
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: ${{ secrets.VPS_IP }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: "${{ secrets.VPS_IP }}"
+          username: "${{ secrets.VPS_USER }}"
+          key: "${{ secrets.VPS_SSH_KEY }}"
           script: |
             cd ~/be-vps
             git pull origin main
