@@ -29,7 +29,7 @@ jobs:
           script: |
             cd ~/be-vps
             git pull origin main --force
+            rm -rf node_modules package-lock.json
             npm install --force
             npm run build 
-            npx pm2 update 
-            npx pm2 restart server || npx pm2 start dist/server.js --name "server"
+            npx pm2 restart server
