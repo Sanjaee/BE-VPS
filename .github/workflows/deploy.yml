@@ -30,4 +30,4 @@ jobs:
             cd ~/be-vps
             git pull origin main --force
             npm install --force
-            pm2 restart server || pm2 start dist/server.js --name "server"
+            npx pm2 restart server || npx pm2 start dist/server.js --name "server"
