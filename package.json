@@ -4,8 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "./node_modules/.bin/tsc",
-    "start": "node dist/server.js"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:push": "npx drizzle-kit push",
+    "db:generate": "npx drizzle-kit generate"
   },
   "keywords": [],
   "author": "",
