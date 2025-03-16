@@ -1,10 +1,12 @@
 import express from "express";
 import authRoutes from "./routes/userRoute";
+import postRoutes from "./routes/postRoutes"
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes);
 
 // Route dasar untuk memastikan API berjalan
 app.get("/", (req, res) => {
