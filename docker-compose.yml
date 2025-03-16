@@ -15,7 +15,7 @@ services:
       DB_HOST: db         
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: test
+      DB_PASSWORD: 123456
       DB_NAME: pengalaman
 
   db:
